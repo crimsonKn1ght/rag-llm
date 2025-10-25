@@ -1,4 +1,6 @@
+chromadb
+tiktoken
 langchain
+langchainhub
+langchain-openai
 langchain-community
-pypdf
-faiss-gpu
