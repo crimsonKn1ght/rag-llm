@@ -40,13 +40,24 @@ from rag_core import (
 st.set_page_config(page_title="RAG From Scratch (Streamlit)", page_icon="📚", layout="wide")
 st.title("📚 RAG From Scratch — Full App")
 
+# -----------------------------
+# [Setup] Load API key securely
+# -----------------------------
+import os
+import streamlit as st
+
+
+# Try loading from Streamlit secrets first, fallback to environment variable
+if "OPENAI_API_KEY" in st.secrets:
+    os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+elif os.getenv("OPENAI_API_KEY"):
+    pass  # already set via environment
+else:
+    st.warning("⚠️ No OPENAI_API_KEY found. Please set it in Streamlit secrets or your environment.")
+
+
 with st.sidebar:
     st.header("⚙️ Configuration")
-
-    # API key input (only needed for OpenAI backend)
-    openai_key = st.text_input("OpenAI API Key", type="password", help="Required if you choose OpenAI embeddings/LLM.")
-    if openai_key:
-        os.environ["OPENAI_API_KEY"] = openai_key
 
     backend = st.selectbox("Embedding Backend", ["openai", "sbert"], index=0,
                            help="Use OpenAI API or local SentenceTransformers (GPU-capable).")
@@ -111,8 +122,9 @@ def save_uploaded_files(files: List, dest_dir: Path) -> List[Path]:
 
 def validate_inputs():
     if backend == "openai" and not os.getenv("OPENAI_API_KEY"):
-        st.error("OPENAI_API_KEY not provided. Enter it in the sidebar or switch to SBERT backend.")
+        st.error("OPENAI_API_KEY missing. Add it to Streamlit secrets or environment.")
         return False
+
     if source_mode in ["URL", "URL + Files"] and not url:
         st.error("Please provide a URL or switch source mode.")
         return False

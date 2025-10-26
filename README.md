@@ -48,7 +48,7 @@ This app lets you load web pages or upload files, create vector embeddings (usin
 
 ```bash
 # 1. Clone your project folder
-git clone <your_repo_url>
+https://github.com/crimsonKn1ght/rag-llm
 cd rag_project
 
 # 2. (Optional) Create a virtual environment
