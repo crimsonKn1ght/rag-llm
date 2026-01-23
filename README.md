@@ -9,7 +9,7 @@
     <img src="https://img.shields.io/github/forks/crimsonKn1ght/rag-llm?style=for-the-badge" alt="GitHub forks">
   </a>
   <a href="https://github.com/crimsonKn1ght/rag-llm/graphs/commit-activity">
-    <img src="https://img.shields.io/maintenance/yes/2025?style=for-the-badge" alt="Maintained">
+    <img src="https://img.shields.io/maintenance/yes/2026?style=for-the-badge" alt="Maintained">
   </a>
   <a href="https://github.com/crimsonKn1ght/rag-llm">
     <img src="https://img.shields.io/github/languages/top/crimsonKn1ght/rag-llm?style=for-the-badge" alt="Language">
