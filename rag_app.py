@@ -2,7 +2,9 @@ import streamlit as st
 import os
 from pathlib import Path
 import tempfile
-from rag_core import (
+
+# Updated imports for the new modular rag_system package
+from rag_system import (
     load_docs_from_url,
     load_docs_from_paths,
     run_rag,
